@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.use(cors())
 
+// 辅助函数：将 CSV 字符串转换为 Markdown 表格
 function csvToMarkdown(csv) {
   const lines = csv.trim().split('\n')
   if (lines.length === 0) return ''
@@ -158,6 +159,7 @@ async function parseFileContent(filePath, mimeType) {
       workbook.SheetNames.forEach(sheetName => {
         const sheet = workbook.Sheets[sheetName]
         const sheetData = XLSX.utils.sheet_to_csv(sheet)
+        // 将 CSV 转换为 Markdown 表格格式
         const markdownTable = csvToMarkdown(sheetData)
         text += `【工作表 ${sheetName}】\n${markdownTable}\n\n`
       })
