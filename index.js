@@ -174,7 +174,9 @@ app.post('/api/upload', authenticateToken, upload.single('file'), async (req, re
     originalName = Buffer.from(originalName, 'latin1').toString('utf8')
   }
 
-  const fileUrl = `/uploads/${req.file.filename}`
+  const protocol = req.protocol;
+  const host = req.get('host');
+  const fileUrl = `${protocol}://${host}/uploads/${req.file.filename}`;
   const filePath = path.join(uploadDir, req.file.filename)
 
   let extractedText = null
