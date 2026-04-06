@@ -19,6 +19,18 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.use(cors())
 
+function csvToMarkdown(csv) {
+  const lines = csv.trim().split('\n')
+  if (lines.length === 0) return ''
+  const headers = lines[0].split(',').map(cell => cell.trim())
+  let markdown = '| ' + headers.join(' | ') + ' |\n'
+  markdown += '| ' + headers.map(() => '---').join(' | ') + ' |\n'
+  for (let i = 1; i < lines.length; i++) {
+    const cells = lines[i].split(',').map(cell => cell.trim())
+    markdown += '| ' + cells.join(' | ') + ' |\n'
+  }
+  return markdown
+}
 
 app.post('/api/login', (req, res) => {
   const { mobile, password } = req.body
@@ -125,7 +137,6 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 }
 })
 
-
 async function parseFileContent(filePath, mimeType) {
   try {
     if (mimeType === 'text/plain') {
@@ -147,7 +158,8 @@ async function parseFileContent(filePath, mimeType) {
       workbook.SheetNames.forEach(sheetName => {
         const sheet = workbook.Sheets[sheetName]
         const sheetData = XLSX.utils.sheet_to_csv(sheet)
-        text += `【工作表 ${sheetName}】\n${sheetData}\n\n`
+        const markdownTable = csvToMarkdown(sheetData)
+        text += `【工作表 ${sheetName}】\n${markdownTable}\n\n`
       })
       return text || '[Excel 文件无内容]'
     } else if (mimeType.startsWith('image/')) {
@@ -174,9 +186,9 @@ app.post('/api/upload', authenticateToken, upload.single('file'), async (req, re
     originalName = Buffer.from(originalName, 'latin1').toString('utf8')
   }
 
-  const protocol = req.protocol;
-  const host = req.get('host');
-  const fileUrl = `${protocol}://${host}/uploads/${req.file.filename}`;
+  const protocol = req.protocol
+  const host = req.get('host')
+  const fileUrl = `${protocol}://${host}/uploads/${req.file.filename}`
   const filePath = path.join(uploadDir, req.file.filename)
 
   let extractedText = null
