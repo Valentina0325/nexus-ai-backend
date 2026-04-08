@@ -30,24 +30,24 @@
     "password": "123456"
   }
 
-2️⃣ 文件上传
-POST /api/upload
+###2️⃣ 文件上传
+- **POST** `/api/upload`
 
-Header: Authorization: Bearer <token>
+- **Header**: `Authorization: Bearer <token>`
 
-Body: file (multipart/form-data)
+- **Body**: `file (multipart/form-data)`
 
-3️⃣ AI 对话
-POST /api/chat
+###3️⃣ AI 对话
+- **POST** `/api/chat`
 
-Header: Authorization: Bearer <token>
+- **Header**: `Authorization: Bearer <token>`
 
-Body: { "messages": [...] }
+- **Body**: `{ "messages": [...] }`
 
-响应: 流式 SSE
+-**响应**: `流式 SSE`
 
-🚀 本地运行
-bash
+##🚀 本地运行
+```bash
 git clone https://github.com/Valentina0325/nexus-ai-assistant-backend.git
 cd nexus-ai-assistant-backend
 npm install
