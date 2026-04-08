@@ -1,9 +1,3 @@
-
----
-
-## 🟢 后端仓库 README.md（复制到你的后端仓库）
-
-```markdown
 # 🧠 Nexus AI 助手 · 后端
 
 > Node.js + Express 服务，提供用户认证、文件解析、流式 AI 对话代理与临时文件自动清理。
@@ -31,8 +25,7 @@
 - **POST** `/api/login`
 - **Body**：
   ```json
-  { "mobile": "13300000000", "password": "123456" }
-
-## 响应：
-json
-{ "code": 0, "data": { "token": "jwt...", "userInfo": {...} } }
+  {
+    "mobile": "13300000000",
+    "password": "123456"
+  }
