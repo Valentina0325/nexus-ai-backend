@@ -44,7 +44,7 @@
 
 - **Body**: `{ "messages": [...] }`
 
--**响应**: `流式 SSE`
+- **响应**: `流式 SSE`
 
 ## 🚀 本地运行
 ```bash
@@ -53,6 +53,6 @@ cd nexus-ai-assistant-backend
 npm install
 # 创建 .env 文件，配置 JWT_SECRET_KEY 和 ZHIPU_API_KEY
 npm run dev
-
+```
 ## 🔗 前端仓库
 👉 ` https://github.com/Valentina0325/nexus-ai-assistant`
