@@ -30,14 +30,14 @@
     "password": "123456"
   }
 
-###2️⃣ 文件上传
+### 2️⃣ 文件上传
 - **POST** `/api/upload`
 
 - **Header**: `Authorization: Bearer <token>`
 
 - **Body**: `file (multipart/form-data)`
 
-###3️⃣ AI 对话
+### 3️⃣ AI 对话
 - **POST** `/api/chat`
 
 - **Header**: `Authorization: Bearer <token>`
@@ -46,12 +46,13 @@
 
 -**响应**: `流式 SSE`
 
-##🚀 本地运行
+## 🚀 本地运行
 ```bash
 git clone https://github.com/Valentina0325/nexus-ai-assistant-backend.git
 cd nexus-ai-assistant-backend
 npm install
 # 创建 .env 文件，配置 JWT_SECRET_KEY 和 ZHIPU_API_KEY
 npm run dev
-🔗 前端仓库
-👉 https://github.com/Valentina0325/nexus-ai-assistant
+
+## 🔗 前端仓库
+👉 ` https://github.com/Valentina0325/nexus-ai-assistant`
