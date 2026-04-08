@@ -19,7 +19,7 @@
 
 ## 📡 API 接口文档
 
-基础地址（生产）：`https://nexus-ai-backend-production-3faf.up.railway.app`
+基础地址（生产）：[https://nexus-ai-backend-production-3faf.up.railway.app](https://nexus-ai-backend-production-3faf.up.railway.app)
 
 ### 1️⃣ 用户登录
 - **POST** `/api/login`
@@ -55,4 +55,4 @@ npm install
 npm run dev
 ```
 ## 🔗 前端仓库
-👉 ` https://github.com/Valentina0325/nexus-ai-assistant`
+👉 [https://github.com/Valentina0325/nexus-ai-assistant](https://github.com/Valentina0325/nexus-ai-assistant)
